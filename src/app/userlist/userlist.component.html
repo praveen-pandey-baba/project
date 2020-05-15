@@ -1,0 +1,39 @@
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+      </div>
+      <input
+        type="text" class="form-control" name="searchstring"
+        placeholder="Type to search..." [(ngModel)]="searchstring"
+      />
+    </div>
+  </div>
+</form>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Employee List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Login</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users1 | async | filter : 'login' : searchstring; let i = index ">
+          <td>{{user.id}}</td>
+          <td>{{user.login}}</td>
+          <td><button (click)="userDetails(user.id)" class="btn btn-info">Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
